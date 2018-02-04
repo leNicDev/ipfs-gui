@@ -1,21 +1,20 @@
 {
   "name": "angular-electron",
-<<<<<<< HEAD
-  "version": "1.4.4",
-=======
-  "version": "1.6.0",
->>>>>>> increment version deps
-  "description": "Angular 4 with Electron (Typescript + SASS + Hot Reload)",
-  "homepage": "https://github.com/maximegris/angular-electron",
+  "version": "0.0.1",
+  "description": "GUI wrapper for the go-ipfs IPFS implementation",
+  "homepage": "https://github.com/leNicDev/ipfs-gui",
   "author": {
-    "name": "Maxime GRIS",
-    "email": "maxime.gris@gmail.com"
+    "name": "leNicDev",
+    "email": "germanelectronix@gmail.com"
   },
   "keywords": [
     "angular",
     "electron",
     "typescript",
-    "sass"
+    "scss",
+    "ipfs",
+    "go-ipfs",
+    "gui"
   ],
   "main": "main.js",
   "private": true,
@@ -100,5 +99,5 @@
     "webpack": "3.0.0",
     "webpack-dev-server": "2.5.0"
   },
-  "license": "SEE LICENSE IN LICENSE.md"
+  "license": "SEE LICENSE IN LICENSE"
 }
