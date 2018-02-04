@@ -1,5 +1,19 @@
-<div class="container">
-  <h1 class="title">
-    {{title}}
-  </h1>
+<!-- IPFS Logo -->
+<img src="../../../assets/ipfs-logo.svg" class="ipfs-logo">
+
+<h1 class="title">Upload a file to the IPFS</h1>
+
+<div class="file-dialog" *ngIf="!_busy">
+  <div class="upload-field">
+    <input type="file" #fileInput (change)="onFileChange($event.target.files)" />
+    <button class="upload-button" (click)="fileInput.click()" [disabled]="_busy"><i class="fas fa-cloud-upload-alt"></i></button>
+  </div>
+</div>
+
+<!-- Spinner -->
+<app-spinner *ngIf="_busy"></app-spinner>
+
+<!-- Hash output -->
+<div class="hash-wrapper">
+  <span class="hash" data-tooltip="Click to copy the hash to your clipboard" data-placement="bottom">{{ _hash }}</span>
 </div>

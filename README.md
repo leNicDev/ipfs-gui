@@ -4,7 +4,7 @@
 
 # Introduction
 
-ipfs-gui is a gui wrapper for the [go-ipfs](https://github.com/ipfs/go-ipfs) IPFS implementation. ipfs-gui uses Electron and Angular 5.
+ipfs-gui is a GUI wrapper for the [go-ipfs](https://github.com/ipfs/go-ipfs) IPFS implementation. ipfs-gui uses Electron and Angular 5.
 
 # Features
 
