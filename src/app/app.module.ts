@@ -11,6 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { ElectronService } from './providers/electron.service';
 import { IpfsService } from './providers/ipfs.service';
 import { SpinnerComponent } from './components/spinner/spinner.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule
   ],
   providers: [ElectronService, IpfsService],

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IpfsService } from '../../providers/ipfs.service';
+import { AddResult } from '../../models/AddResult';
 
 @Component({
   selector: 'app-home',
@@ -12,11 +13,21 @@ export class HomeComponent implements OnInit {
   _hash: string;
   _busy: boolean;
 
+  _error: string;
+
 
   constructor(public _ipfs: IpfsService) { }
 
 
   ngOnInit() {
+    this._ipfs.isDaemonRunning('127.0.0.1', 5001)
+      .subscribe(
+        (result: boolean) => {
+          if (!result) {
+            this.error = 'The IPFS daemon is currently not running! Start it using <span class="mono">ipfs daemon</span>.';
+          }
+        }
+      );
   }
 
 
@@ -32,11 +43,15 @@ export class HomeComponent implements OnInit {
   ipfsAddFile(file: File) {
     this._busy = true;
 
-    this._ipfs.add(file)
+    const progress = (bytes: number) => {
+      console.log(`Progress: ${bytes}/${file.size}`);
+    };
+
+    this._ipfs.add(file, progress)
       .subscribe(
-        (hash: string) => {
-          console.log(`Successfully added file ${hash}`);
-          this._hash = hash;
+        (result: AddResult) => {
+          console.log(`Successfully added file ${JSON.stringify(result)}`);
+          this._hash = result.hash;
           this._busy = false;
           console.log('Test');
         },
@@ -58,6 +73,15 @@ export class HomeComponent implements OnInit {
     if (event.clipboardData) {
       event.clipboardData.setData('text/plain', this._hash);
     }
+  }
+
+
+  get error() {
+    return this._error;
+  }
+
+  set error(error: string) {
+    this._error = error;
   }
 
 }
