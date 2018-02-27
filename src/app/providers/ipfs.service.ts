@@ -38,7 +38,7 @@ export class IpfsService {
       const files = [
         {
           path: file.path,
-          content: readFileSync(file.path, { encoding: 'buffer' })
+          content: readFileSync(file.path)
         }
       ];
 
